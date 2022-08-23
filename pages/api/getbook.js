@@ -21,7 +21,7 @@ const allowCors = fn => async (req, res) => {
     return await fn(req, res)
   }
   
-  const handler = (req, res) => {
+  const handler = async (req, res)  => {
     console.log('a   aaaaaaaaaa')
 
     if (req.method === 'GET') {
