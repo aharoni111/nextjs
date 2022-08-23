@@ -4,19 +4,22 @@ import useSWR from 'swr';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Swal from 'sweetalert2'
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 
 
 
 export default function Home() {
-  // const serverName = 'http://localhost:3001/'
-  
-  const serverName = 'https://nextjs-q0hopx4md-aharoni111.vercel.app/'
+  const serverName = 'http://localhost:3001/'
+  const Swal = require('sweetalert2')
+  // const serverName = 'https://nextjs-q0hopx4md-aharoni111.vercel.app/'
   const [modalOpen, setModalOpen] = React.useState(false);
   async function sendReq(){
     let bookName = document.getElementById('bookName').value
     let authorName = document.getElementById('authorName').value
+    let email = document.getElementById('emailAd').value
+    let dataToSend = JSON.stringify({bookName,authorName,email})
     let headers = {"Access-Control-Allow-Origin": "*"}
     //  await axios.post(serverName + 'api/getbook',
     //  {bookName,authorName},
@@ -26,9 +29,15 @@ export default function Home() {
     // });
     let connectStr = "/api/getbook"
     fetch(connectStr, {
-      method: 'POST'}, {bookName,authorName})
+      method: 'POST', body: dataToSend, headers: { 'Content-Type': 'application/json' }})
         .then(response => response.json())
-    alert(bookName + ', ' + authorName)
+        setModalOpen(!modalOpen)
+        Swal.fire({
+          title: 'בוצע',
+          text: 'הבקשה נשלחה בהצלחה, בעז"ה נשלח לכם בקרוב לינק להורדת הספר, שימו לב באם לא השארתם כתובת אימייל יש לעקוב אחרי ספרים אחרונים שנוספו למאגר בכדי לראות אם הספר נוסף',
+          icon: 'success',
+          confirmButtonText: 'אישור'
+        })
   }
   function sendGet(){
     
@@ -67,7 +76,7 @@ export default function Home() {
   </div>
   <div className="form-group">
     <label htmlFor="exampleInputPassword1">כתובת אימייל</label>
-    <input type="email" className="form-control" id="exampleInputPassword1" placeholder="כתובת אימייל"/>
+    <input type="email" className="form-control" id="emailAd" placeholder="כתובת אימייל"/>
     <small id="emailHelp" className="form-text text-muted">אין חובה למלא אימייל, אבל נשלח לך הודעה ברגע שהספר יעלה</small>
   </div>
 

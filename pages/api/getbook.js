@@ -51,7 +51,7 @@ const allowCors = fn => async (req, res) => {
       res.send(ip)
     }
     else if (req.method === 'POST'){
-        
+        console.log('ddddddddddddd            ' + JSON.stringify(req.body))
         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
         let time =  moment()
         let dataToSend = {...req.body, ip,time}
