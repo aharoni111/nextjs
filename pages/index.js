@@ -1,8 +1,23 @@
+import React from "react";
+import axios from 'axios';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import "bootstrap/dist/css/bootstrap.css";
+import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 
 export default function Home() {
+  // const serverName = 'http://localhost:3001/'
+  const serverName = 'https://nextjs-q0hopx4md-aharoni111.vercel.app/'
+  const [modalOpen, setModalOpen] = React.useState(false);
+  function sendReq(){
+    let bookName = document.getElementById('bookName').value
+    let authorName = document.getElementById('authorName').value
+     axios.post(serverName + 'api/getbook', {bookName,authorName}).then(response => {
+      console.log(response.data);
+    });
+    alert(bookName + ', ' + authorName)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -12,41 +27,81 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+      <Modal toggle={() => setModalOpen(!modalOpen)} isOpen={modalOpen}>
+        <div className=" modal-header">
+          <h5 className=" modal-title" id="exampleModalLabel">
+            בקשות ספרים
+          </h5>
+
+        </div>
+        <ModalBody>
+        <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">שם הספר</label>
+    <input type="text" class="form-control" id="bookName" aria-describedby="emailHelp" placeholder="שם הספר"/>
+    <small> </small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">שם המחבר</label>
+    <input type="text" class="form-control" id="authorName" aria-describedby="emailHelp" placeholder="שם המחבר"/>
+    <small> </small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">כתובת אימייל</label>
+    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="כתובת אימייל"/>
+    <small id="emailHelp" class="form-text text-muted">אין חובה למלא אימייל, אבל נשלח לך הודעה ברגע שהספר יעלה</small>
+  </div>
+
+
+</form>
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            color="secondary"
+            type="button"
+            onClick={() => setModalOpen(!modalOpen)}
+          >
+            סגור
+          </Button>
+          <Button color="primary" type="button"  onClick={() => sendReq()}>
+            שלח בקשה
+          </Button>
+        </ModalFooter>
+      </Modal>
         <h1 className={styles.title}>
           ספרי קודש <a href="https://nextjs.org"></a>
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          רוב רובם של הספרים בהישג יד, אנחנו נשתדל להענות לבקשות פרטיות בהקדם האפשרי
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a onClick={() => setModalOpen(!modalOpen)} className={styles.card}>
+            <h2> בקשות ספרים &larr;</h2>
+            <p>כאן ניתן לבקש ספרים, ואנחנו נשתדל להעלות אותם לאתר בהקדם האפשרי</p>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+            <h2>לימוד שיתופי &larr;</h2>
+            <p>הפרויקט עדיין בבניה, בקרוב מאד נוכל לתת לכם עוד פרטים</p>
           </a>
 
           <a
             href="https://github.com/vercel/next.js/tree/canary/examples"
             className={styles.card}
           >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+            <h2>נוספו לאחרונה &rarr;</h2>
+            <p>רשימת ספרים להורדה שנוספו לאחרונה, רשימה זו מתעדכנת מפעם לפעם</p>
           </a>
 
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
           >
-            <h2>Deploy &rarr;</h2>
+            <h2>כתבו לנו &rarr;</h2>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              כל הצעה או הערה והארה, תתקבל בשמחה, מוזמנים לכתוב!!
             </p>
           </a>
         </div>

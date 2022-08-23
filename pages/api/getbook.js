@@ -53,7 +53,21 @@ export default async function handler(req, res) {
       console.log(ip)
       console.log(req.url)
       res.send(ip)
-    } else {
+    }
+    else if (req.method === 'POST'){
+        const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        let time =  moment()
+        let dataToSend = {...req.body, ip,time}
+        console.log(ip)
+        console.log(JSON.stringify(dataToSend))
+        await axios.post('https://office.otzar.org/api/address/updateBookReqs', dataToSend).then(response => {
+            console.log(response.data);
+          });
+        res.send('sss')
+    }
+    
+    
+    else {
       // Handle any other HTTP method
       res.status(200).json({ name: 'John Doe' })
     }
