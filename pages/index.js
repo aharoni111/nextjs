@@ -18,12 +18,15 @@ export default function Home() {
     let bookName = document.getElementById('bookName').value
     let authorName = document.getElementById('authorName').value
     let headers = {"Access-Control-Allow-Origin": "*"}
-     await axios.post(serverName + 'api/getbook',
-     {bookName,authorName},
-     headers
-    ).then(response => {
-      console.log(response.data);
-    });
+    //  await axios.post(serverName + 'api/getbook',
+    //  {bookName,authorName},
+    //  headers
+    // ).then(response => {
+    //   console.log(response.data);
+    // });
+    let connectStr = "/api/getbook"
+    fetch(connectStr, {bookName,authorName})
+        .then(response => response.json())
     alert(bookName + ', ' + authorName)
   }
   function sendGet(){
