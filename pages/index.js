@@ -36,20 +36,20 @@ export default function Home() {
         </div>
         <ModalBody>
         <form>
-  <div class="form-group">
+  <div className="form-group">
     <label for="exampleInputEmail1">שם הספר</label>
-    <input type="text" class="form-control" id="bookName" aria-describedby="emailHelp" placeholder="שם הספר"/>
+    <input type="text" className="form-control" id="bookName" aria-describedby="emailHelp" placeholder="שם הספר"/>
     <small> </small>
   </div>
-  <div class="form-group">
+  <div className="form-group">
     <label for="exampleInputEmail1">שם המחבר</label>
-    <input type="text" class="form-control" id="authorName" aria-describedby="emailHelp" placeholder="שם המחבר"/>
+    <input type="text" className="form-control" id="authorName" aria-describedby="emailHelp" placeholder="שם המחבר"/>
     <small> </small>
   </div>
-  <div class="form-group">
+  <div className="form-group">
     <label for="exampleInputPassword1">כתובת אימייל</label>
-    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="כתובת אימייל"/>
-    <small id="emailHelp" class="form-text text-muted">אין חובה למלא אימייל, אבל נשלח לך הודעה ברגע שהספר יעלה</small>
+    <input type="email" className="form-control" id="exampleInputPassword1" placeholder="כתובת אימייל"/>
+    <small id="emailHelp" className="form-text text-muted">אין חובה למלא אימייל, אבל נשלח לך הודעה ברגע שהספר יעלה</small>
   </div>
 
 
