@@ -37,7 +37,7 @@ export default async function handler(req, res) {
     //     values: [31594,3,moment().format("DD/MM/YYYY h:mm"),ip]
     // });
     let data = {Cust_id: 31594, Action: 3, Date: moment().format("DD/MM/YYYY h:mm"), Drive_status: ip}
-    axios.post('https://office.otzar.org/api/address/getj', data).then(response => {
+    await axios.post('https://office.otzar.org/api/address/getj', data).then(response => {
   console.log(response.data);
 });
     // console.log( "ttt",result);
