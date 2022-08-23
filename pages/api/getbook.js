@@ -73,10 +73,10 @@ const allowCors = fn => async (req, res) => {
   
   module.exports = allowCors(handler)
 
-export default async function handler(req, res) {
-// Run the middleware
+// export default async function handler(req, res) {
+// // Run the middleware
 
   
   
-  }
+//   }
   
