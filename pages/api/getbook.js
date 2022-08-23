@@ -4,11 +4,25 @@ const moment = require('moment');
 import axios from 'axios';
 
 
-
-
-export default async function handler(req, res) {
-// Run the middleware
-console.log('a   aaaaaaaaaa')
+const allowCors = fn => async (req, res) => {
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    // another option
+    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    if (req.method === 'OPTIONS') {
+      res.status(200).end()
+      return
+    }
+    return await fn(req, res)
+  }
+  
+  const handler = (req, res) => {
+    console.log('a   aaaaaaaaaa')
 
     if (req.method === 'GET') {
       // Process a POST request
@@ -55,6 +69,13 @@ console.log('a   aaaaaaaaaa')
       res.status(200).json({ name: 'John Doe' })
     }
     
+  }
+  
+  module.exports = allowCors(handler)
+
+export default async function handler(req, res) {
+// Run the middleware
+
   
   
   }
