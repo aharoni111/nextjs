@@ -5,7 +5,7 @@ export default function handler(req, res) {
       // Process a POST request
 
     
-      var ip = (req.headers["cf-connecting-ip"]) ? req.headers["cf-connecting-ip"] : 'unknown';
+      const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     
       console.log(ip)
       console.log(req.url)
