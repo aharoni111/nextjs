@@ -2,51 +2,14 @@
 const fs = require('fs')
 const moment = require('moment');
 import axios from 'axios';
-import Cors from 'cors'
-const cors = Cors({
-    methods: ['GET', 'POST', 'HEAD'],
-  })
-  
-  // Helper method to wait for a middleware to execute before continuing
-  // And to throw an error when an error happens in a middleware
-  function runMiddleware(req, res, fn) {
-    return new Promise((resolve, reject) => {
-      fn(req, res, (result) => {
-        if (result instanceof Error) {
-          return reject(result)
-        }
-  
-        return resolve(result)
-      })
-    })
-  }
-import mysql from 'serverless-mysql';
-// const db = mysql({
-//   config: {
-//     host: "192.168.15.41",
-//   user: "root",
-//   password: "1234",
-//   database: "otzarcust",
-//   type: "mysql"
-//   }
-// });
 
-// async function excuteQuery({ query, values }) {
-//     console.log(values)
-//   try {
-//     const results = await db.query(query, [values]);
 
-//     await db.end();
-//     return results;
-//   } catch (error) {
-//     return { error };
-//   }
-// }
 
 
 export default async function handler(req, res) {
 // Run the middleware
-await runMiddleware(req, res, cors)
+console.log('a   aaaaaaaaaa')
+
     if (req.method === 'GET') {
       // Process a POST request
       const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -74,11 +37,12 @@ await runMiddleware(req, res, cors)
       res.send(ip)
     }
     else if (req.method === 'POST'){
+        
         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
         let time =  moment()
         let dataToSend = {...req.body, ip,time}
         console.log(ip)
-        console.log(JSON.stringify(dataToSend))
+        console.log('a   ' + JSON.stringify(dataToSend))
         await axios.post('https://office.otzar.org/api/address/updateBookReqs', dataToSend).then(response => {
             console.log(response.data);
           });

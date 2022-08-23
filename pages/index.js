@@ -1,32 +1,37 @@
 import React from "react";
 import axios from 'axios';
+import useSWR from 'swr';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 
+
+
 export default function Home() {
   // const serverName = 'http://localhost:3001/'
   
   const serverName = 'https://nextjs-q0hopx4md-aharoni111.vercel.app/'
   const [modalOpen, setModalOpen] = React.useState(false);
-  function sendReq(){
+  async function sendReq(){
     let bookName = document.getElementById('bookName').value
     let authorName = document.getElementById('authorName').value
-     axios.post(serverName + 'api/getbook',
-    //   {
-    //   headers: {
-    //     "Access-Control-Allow-Credentials": "true",
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-    //     "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-    //   }
-    // },
-     {bookName,authorName}).then(response => {
+    let headers = {"Access-Control-Allow-Origin": "*"}
+     await axios.post(serverName + 'api/getbook',
+     {bookName,authorName},
+     headers
+    ).then(response => {
       console.log(response.data);
     });
     alert(bookName + ', ' + authorName)
+  }
+  function sendGet(){
+    
+     axios.get(serverName + 'api/getbook').then(response => {
+      console.log(response.data);
+      alert(response.data)
+    });
   }
   return (
     <div className={styles.container}>
@@ -92,7 +97,7 @@ export default function Home() {
             <p>כאן ניתן לבקש ספרים, ואנחנו נשתדל להעלות אותם לאתר בהקדם האפשרי</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
+          <a onClick={() => sendGet()} className={styles.card}>
             <h2>לימוד שיתופי &larr;</h2>
             <p>הפרויקט עדיין בבניה, בקרוב מאד נוכל לתת לכם עוד פרטים</p>
           </a>
