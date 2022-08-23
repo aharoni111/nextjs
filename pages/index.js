@@ -25,7 +25,8 @@ export default function Home() {
     //   console.log(response.data);
     // });
     let connectStr = "/api/getbook"
-    fetch(connectStr, {bookName,authorName})
+    fetch(connectStr, {
+      method: 'POST'}, {bookName,authorName})
         .then(response => response.json())
     alert(bookName + ', ' + authorName)
   }
