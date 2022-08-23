@@ -2,7 +2,24 @@
 const fs = require('fs')
 const moment = require('moment');
 import axios from 'axios';
-import NextCors from 'nextjs-cors';
+import Cors from 'cors'
+const cors = Cors({
+    methods: ['GET', 'POST', 'HEAD'],
+  })
+  
+  // Helper method to wait for a middleware to execute before continuing
+  // And to throw an error when an error happens in a middleware
+  function runMiddleware(req, res, fn) {
+    return new Promise((resolve, reject) => {
+      fn(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result)
+        }
+  
+        return resolve(result)
+      })
+    })
+  }
 import mysql from 'serverless-mysql';
 // const db = mysql({
 //   config: {
@@ -28,12 +45,8 @@ import mysql from 'serverless-mysql';
 
 
 export default async function handler(req, res) {
-    await NextCors(req, res, {
-        // Options
-        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-        origin: '*',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-     });
+// Run the middleware
+await runMiddleware(req, res, cors)
     if (req.method === 'GET') {
       // Process a POST request
       const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
