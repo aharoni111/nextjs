@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     //     query: 'INSERT INTO useractionlog(Cust_id, Action, Date, Drive_status) VALUES(?)',
     //     values: [31594,3,moment().format("DD/MM/YYYY h:mm"),ip]
     // });
-    let data = {Cust_id: 31594, Action: 3, Date: moment().format("DD/MM/YYYY h:mm"), Drive_status: ip}
+    let data = {Cust_id: 31594, Action: 3, Date: moment(), Drive_status: ip}
     await axios.post('https://office.otzar.org/api/address/getj', data).then(response => {
   console.log(response.data);
 });
