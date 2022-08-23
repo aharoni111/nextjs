@@ -43,13 +43,13 @@ export default async function handler(req, res) {
     // console.log( "ttt",result);
 
       
-      fs.appendFile('./wLog.txt', ip + '  ' + moment().format("DD/MM/YYYY h:mm") + '\r\n' , err => {
-        if (err) {
-          console.error(err)
-          return
-        }
-        //file written successfully
-      })
+    //   fs.appendFile('./wLog.txt', ip + '  ' + moment().format("DD/MM/YYYY h:mm") + '\r\n' , err => {
+    //     if (err) {
+    //       console.error(err)
+    //       return
+    //     }
+    //     //file written successfully
+    //   })
       console.log(ip)
       console.log(req.url)
       res.send(ip)
