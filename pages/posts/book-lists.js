@@ -197,7 +197,7 @@ return(
 </div>
 <div className={styles.lefSide}>
 <img
-      class={styles.previewImg}
+      className={styles.previewImg}
       src={picLink}
       alt="Picture of the author"
       width={500}
