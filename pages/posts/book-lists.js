@@ -9,9 +9,9 @@ export default function BookLists(props) {
   let connectStr = "/api/getrecentbooks"
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
-     fetch(connectStr, {
-      method: 'GET'})
-        .then(async response => books = response.data)
+    //  fetch(connectStr, {
+    //   method: 'GET'})
+    //     .then(async response => books = response.data)
        
         useEffect(() => {
           setLoading(true);
