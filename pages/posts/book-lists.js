@@ -28,7 +28,7 @@ export default function BookLists(props) {
 return(
   
   <div className={styles.container}>
-    <nav className="navbar navbar-expand-lg navbar-light bg-light rtl">
+    {/* <nav className="navbar navbar-expand-lg navbar-light bg-light rtl">
 
   <div className="container-fluid">
 
@@ -132,7 +132,7 @@ return(
 
   </div>
 
-</nav>
+</nav> */}
 
 <table className="table table-sm table-light">
   <thead>
