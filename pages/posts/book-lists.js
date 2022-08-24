@@ -111,13 +111,7 @@ return(
           data-mdb-toggle="dropdown"
           aria-expanded="false"
         >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-            className="rounded-circle"
-            height="25"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
-          />
+
         </a>
         <ul
           className="dropdown-menu dropdown-menu-end"

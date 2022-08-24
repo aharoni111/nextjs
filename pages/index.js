@@ -68,12 +68,7 @@ export default function Home() {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
       <a className="navbar-brand mt-2 mt-lg-0" href="#">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          height="15"
-          alt="MDB Logo"
-          loading="lazy"
-        />
+      
       </a>
  
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -136,13 +131,7 @@ export default function Home() {
           data-mdb-toggle="dropdown"
           aria-expanded="false"
         >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-            className="rounded-circle"
-            height="25"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
-          />
+         
         </a>
         <ul
           className="dropdown-menu dropdown-menu-end"
