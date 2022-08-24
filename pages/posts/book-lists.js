@@ -2,6 +2,7 @@ import styles from '../../styles/Home.module.css'
 import "bootstrap/dist/css/bootstrap.css";
 import { useEffect, useState } from "react";
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function BookLists(props) {
  
@@ -11,6 +12,7 @@ export default function BookLists(props) {
 
   var [data, setData] = useState(null);
   var [tableToShow, setTableToShow] = useState(false);
+  var [picLink, setPicLink] = useState(false);
   const [isLoading, setLoading] = useState(false);      
         useEffect(() => {
           setLoading(true);
@@ -35,6 +37,11 @@ function setT(){
   var dataToReturn = data.filter((x)=>{return x.bookName.includes(searchString) || x.bookAuthor.includes(searchString)})
   setTableToShow(dataToReturn)
   console.log('end');
+}
+function setPic(id){
+  let link = 'https://beta.hebrewbooks.org/pagepngs/' + id + '_1_300_0.png'
+  // alert(link)
+  setPicLink(link)
 }
 function doldfile(a){
   var link = document.createElement("a");
@@ -158,7 +165,8 @@ return(
 
 </nav>
 <input placeholder='חפש שם ספר או מחבר' onKeyUp={()=>setT()} id="searchString"></input>
-
+<div className={styles.bookListHolder}>
+<div className={styles.rightSide}>
 <table className="table table-sm table-light">
   <thead>
     <tr>
@@ -172,7 +180,7 @@ return(
   </thead>
   <tbody>
   {tableToShow.map((row, index) => {
-          return <tr key={row.id}>
+          return <tr onMouseEnter={()=>setPic(tableToShow[index]?.bookLink)} key={row.id}>
             <th scope="row">{index+1}</th>
             <td> {tableToShow[index]?.bookName}</td>
             <td> {tableToShow[index]?.bookAuthor}</td>
@@ -186,6 +194,17 @@ return(
     
   </tbody>
 </table>
+</div>
+<div className={styles.lefSide}>
+<img
+      class={styles.previewImg}
+      src={picLink}
+      alt="Picture of the author"
+      width={500}
+      height={750}
+    />
+    </div> 
+</div>
 </div>
 )
 }
