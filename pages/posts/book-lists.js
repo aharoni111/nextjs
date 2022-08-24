@@ -2,7 +2,7 @@
 import styles from '../../styles/Home.module.css'
 import "bootstrap/dist/css/bootstrap.css";
 import { useEffect, useState } from "react";
-
+import Link from 'next/link'
 
 
 export default function BookLists(props) {
@@ -146,7 +146,7 @@ return(
 
 </nav>
 
-<table class="table table-sm table-light">
+<table className="table table-sm table-light">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -161,7 +161,7 @@ return(
             <th scope="row">{data[index]?.id}</th>
             <td> {data[index]?.bookName}</td>
             <td> {data[index]?.bookAuthor}</td>
-            <td> <a href={data[index]?.bookLink}  download="custom-filename.pdf">לחץ להורדה</a></td>
+            <td> <Link href={data[index]?.bookLink}><a>לחץ להורדה</a></Link></td>
             
             <br/>
           </tr>;

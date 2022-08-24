@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css'
 import Swal from 'sweetalert2'
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-
+import Link from 'next/link'
 
 
 export default function Home() {
@@ -232,14 +232,15 @@ export default function Home() {
             <p>הפרויקט עדיין בבניה, בקרוב מאד נוכל לתת לכם עוד פרטים</p>
           </a>
 
+          <Link  href="/posts/book-lists">
           <a
-            href="/posts/book-lists"
+           
             className={styles.card}
           >
             <h2>נוספו לאחרונה &larr;</h2>
             <p>רשימת ספרים להורדה שנוספו לאחרונה, רשימה זו מתעדכנת מפעם לפעם</p>
           </a>
-
+          </Link>
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
