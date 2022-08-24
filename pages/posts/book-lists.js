@@ -8,11 +8,7 @@ export default function BookLists(props) {
   var books = []
   let connectStr = "/api/getrecentbooks"
   const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(false);
-    //  fetch(connectStr, {
-    //   method: 'GET'})
-    //     .then(async response => books = response.data)
-       
+  const [isLoading, setLoading] = useState(false);      
         useEffect(() => {
           setLoading(true);
           fetch(connectStr, {
@@ -28,7 +24,7 @@ export default function BookLists(props) {
 return(
   
   <div className={styles.container}>
-    {/* <nav className="navbar navbar-expand-lg navbar-light bg-light rtl">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light rtl">
 
   <div className="container-fluid">
 
@@ -132,7 +128,7 @@ return(
 
   </div>
 
-</nav> */}
+</nav>
 
 <table className="table table-sm table-light">
   <thead>

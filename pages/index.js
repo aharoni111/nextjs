@@ -48,7 +48,7 @@ export default function Home() {
   }
   return (
     <div className={styles.container}>
-    {/* <nav className="navbar navbar-expand-lg navbar-light bg-light rtl">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light rtl">
 
   <div className="container-fluid">
 
@@ -152,7 +152,7 @@ export default function Home() {
 
   </div>
 
-</nav> */}
+</nav>
       <Head>
         
         <title>ספרי קודש</title>
