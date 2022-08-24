@@ -3,11 +3,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useEffect, useState } from "react";
 import Link from 'next/link'
 
-
 export default function BookLists(props) {
+ 
   var books = []
+  var baselink = "https://download.hebrewbooks.org/downloadhandler.ashx?req="
   let connectStr = "/api/getrecentbooks"
-  const [data, setData] = useState(null);
+
+  var [data, setData] = useState(null);
+  var [tableToShow, setTableToShow] = useState(false);
   const [isLoading, setLoading] = useState(false);      
         useEffect(() => {
           setLoading(true);
@@ -16,11 +19,36 @@ export default function BookLists(props) {
             .then((res) => res.json())
             .then((data) => {
               setData(data);
+              setTableToShow(data);
+              // setData(data.filter(x=>{return x.bookName=='אבן לב'}));
               setLoading(false);
             });
         }, []);
         if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No about data</p>;
+  // var searchString = document.getElementById('searchString').value
+  // var tableToShow = data
+
+  
+function setT(){
+  var searchString = document.getElementById('searchString').value
+  var dataToReturn = data.filter((x)=>{return x.bookName.includes(searchString) || x.bookAuthor.includes(searchString)})
+  setTableToShow(dataToReturn)
+  console.log('end');
+}
+function doldfile(a){
+  var link = document.createElement("a");
+  link.download = 'aa.pdf';
+  link.href = 'https://download.hebrewbooks.org/downloadhandler.ashx?req=916';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  // delete link;
+  // var blobUrl = URL.createObjectURL(blob);
+    
+   
+  // alert(link)
+}
 return(
   
   <div className={styles.container}>
@@ -129,6 +157,7 @@ return(
   </div>
 
 </nav>
+<input placeholder='חפש שם ספר או מחבר' onKeyUp={()=>setT()} id="searchString"></input>
 
 <table className="table table-sm table-light">
   <thead>
@@ -136,16 +165,20 @@ return(
       <th scope="col">#</th>
       <th scope="col">שם הספר</th>
       <th scope="col">שם המחבר</th>
+      <th scope="col">מקום הדפסה</th>
+      <th scope="col">שנת הדפסה</th>
       <th scope="col">קישור להורדה</th>
     </tr>
   </thead>
   <tbody>
-  {data.map((row, index) => {
+  {tableToShow.map((row, index) => {
           return <tr key={row.id}>
-            <th scope="row">{data[index]?.id}</th>
-            <td> {data[index]?.bookName}</td>
-            <td> {data[index]?.bookAuthor}</td>
-            <td> <Link href={data[index]?.bookLink}><a>לחץ להורדה</a></Link></td>
+            <th scope="row">{index+1}</th>
+            <td> {tableToShow[index]?.bookName}</td>
+            <td> {tableToShow[index]?.bookAuthor}</td>
+            <td> {tableToShow[index]?.bookPlace}</td>
+            <td> {tableToShow[index]?.bookYear}</td>
+            <td> <Link href= {baselink + tableToShow[index]?.bookLink}><a>לחץ להורדה</a></Link></td>
             
             <br/>
           </tr>;
