@@ -43,13 +43,20 @@ function setPic(id){
   // alert(link)
   setPicLink(link)
 }
-function doldfile(a){
-  var link = document.createElement("a");
-  link.download = 'aa.pdf';
-  link.href = 'https://download.hebrewbooks.org/downloadhandler.ashx?req=916';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+function doldfile(bookName, bookLink){
+  let connectStr = "/api/downloadBook"
+  let dataToSend = JSON.stringify({bookName, bookLink})
+    fetch(connectStr, {
+      method: 'POST', body: dataToSend, headers: { 'Content-Type': 'application/json' }})
+        .then(response => console.log(response))
+
+ 
+  // var link = document.createElement("a");
+  // link.download = 'aa.pdf';
+  // link.href = 'https://download.hebrewbooks.org/downloadhandler.ashx?req=916';
+  // document.body.appendChild(link);
+  // link.click();
+  // document.body.removeChild(link);
   // delete link;
   // var blobUrl = URL.createObjectURL(blob);
     
@@ -186,7 +193,7 @@ return(
             <td> {tableToShow[index]?.bookAuthor}</td>
             <td> {tableToShow[index]?.bookPlace}</td>
             <td> {tableToShow[index]?.bookYear}</td>
-            <td> <Link href= {baselink + tableToShow[index]?.bookLink}><a>לחץ להורדה</a></Link></td>
+            <td> <Link href= {baselink + tableToShow[index]?.bookLink}><a onClick={()=>doldfile(tableToShow[index]?.bookName, tableToShow[index]?.bookLink)}>לחץ להורדה</a></Link></td>
             
             <br/>
           </tr>;
