@@ -5,7 +5,7 @@ import axios from 'axios';
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         console.log('dddddddddff   ' + req.body)
-        await axios.post('http://localhost:3000/api/address/searchBook',{val: req.body}).then(response => {
+        await axios.post('https://office.otzar.org/api/address/searchBook',{val: req.body}).then(response => {
             // console.log(response.data);
             res.json(response.data)
         });
