@@ -109,27 +109,27 @@ return(
 <div className={styles.bookListHolder}>
 <div className={styles.rightSide}>
 <nav aria-label="Page navigation example" className={styles.ltrr}>
-  <ul class="pagination">
-    <li onClick={()=> setNewPage(1)} class="page-item"><a class="page-link" href="#">1</a></li>
-    <li onClick={()=> setNewPage(2)} class="page-item"><a class="page-link" href="#">2</a></li>
-    <li onClick={()=> setNewPage(3)} class="page-item"><a class="page-link" href="#">3</a></li>
-    <li onClick={()=> setNewPage(4)} class="page-item"><a class="page-link" href="#">4</a></li>
-    <li onClick={()=> setNewPage(5)} class="page-item"><a class="page-link" href="#">5</a></li>
-    <li onClick={()=> setNewPage(6)} class="page-item"><a class="page-link" href="#">6</a></li>
-    <li onClick={()=> setNewPage(7)} class="page-item"><a class="page-link" href="#">7</a></li>
-    <li onClick={()=> setNewPage(8)} class="page-item"><a class="page-link" href="#">8</a></li>
-    <li onClick={()=> setNewPage(9)} class="page-item"><a class="page-link" href="#">9</a></li>
-    <li onClick={()=> setNewPage(10)} class="page-item"><a class="page-link" href="#">10</a></li>
-    <li onClick={()=> setNewPage(11)} class="page-item"><a class="page-link" href="#">11</a></li>
-    <li onClick={()=> setNewPage(12)} class="page-item"><a class="page-link" href="#">12</a></li>
-    <li onClick={()=> setNewPage(13)} class="page-item"><a class="page-link" href="#">13</a></li>
-    <li onClick={()=> setNewPage(14)} class="page-item"><a class="page-link" href="#">14</a></li>
-    <li onClick={()=> setNewPage(15)} class="page-item"><a class="page-link" href="#">15</a></li>
-    <li onClick={()=> setNewPage(16)} class="page-item"><a class="page-link" href="#">16</a></li>
-    <li onClick={()=> setNewPage(17)} class="page-item"><a class="page-link" href="#">17</a></li>
-    <li onClick={()=> setNewPage(18)} class="page-item"><a class="page-link" href="#">18</a></li>
-    <li onClick={()=> setNewPage(19)} class="page-item"><a class="page-link" href="#">19</a></li>
-    <li onClick={()=> setNewPage(20)} class="page-item"><a class="page-link" href="#">20</a></li>
+  <ul className="pagination">
+    <li onClick={()=> setNewPage(1)} className="page-item"><a className="page-link" href="#">1</a></li>
+    <li onClick={()=> setNewPage(2)} className="page-item"><a className="page-link" href="#">2</a></li>
+    <li onClick={()=> setNewPage(3)} className="page-item"><a className="page-link" href="#">3</a></li>
+    <li onClick={()=> setNewPage(4)} className="page-item"><a className="page-link" href="#">4</a></li>
+    <li onClick={()=> setNewPage(5)} className="page-item"><a className="page-link" href="#">5</a></li>
+    <li onClick={()=> setNewPage(6)} className="page-item"><a className="page-link" href="#">6</a></li>
+    <li onClick={()=> setNewPage(7)} className="page-item"><a className="page-link" href="#">7</a></li>
+    <li onClick={()=> setNewPage(8)} className="page-item"><a className="page-link" href="#">8</a></li>
+    <li onClick={()=> setNewPage(9)} className="page-item"><a className="page-link" href="#">9</a></li>
+    <li onClick={()=> setNewPage(10)} className="page-item"><a className="page-link" href="#">10</a></li>
+    <li onClick={()=> setNewPage(11)} className="page-item"><a className="page-link" href="#">11</a></li>
+    <li onClick={()=> setNewPage(12)} className="page-item"><a className="page-link" href="#">12</a></li>
+    <li onClick={()=> setNewPage(13)} className="page-item"><a className="page-link" href="#">13</a></li>
+    <li onClick={()=> setNewPage(14)} className="page-item"><a className="page-link" href="#">14</a></li>
+    <li onClick={()=> setNewPage(15)} className="page-item"><a className="page-link" href="#">15</a></li>
+    <li onClick={()=> setNewPage(16)} className="page-item"><a className="page-link" href="#">16</a></li>
+    <li onClick={()=> setNewPage(17)} className="page-item"><a className="page-link" href="#">17</a></li>
+    <li onClick={()=> setNewPage(18)} className="page-item"><a className="page-link" href="#">18</a></li>
+    <li onClick={()=> setNewPage(19)} className="page-item"><a className="page-link" href="#">19</a></li>
+    <li onClick={()=> setNewPage(20)} className="page-item"><a className="page-link" href="#">20</a></li>
   </ul>
 </nav>
 <table className="table table-sm table-light ">
